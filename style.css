@@ -125,9 +125,3 @@ button{
     text-decoration: line-through;
     color: var(--teal);
 }
-.taskItem img{
-    width: 24px;
-    height: 24px;
-    margin: 0 10px;
-    cursor: pointer;
-}
