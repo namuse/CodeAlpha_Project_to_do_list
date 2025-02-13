@@ -19,7 +19,7 @@ const addTask = () => {
 
     if (text) {
         tasks.push({ text: text, completed: false });
-        taskInput.value = ''; // Clear input after adding
+        taskInput.value = ''; 
         updateTasksList();
         saveTasks();
     }
@@ -40,12 +40,12 @@ const deleteTask = (index) => {
 const editTask = (index) => {
     const taskInput = document.getElementById('taskInput');
     taskInput.value = tasks[index].text;
-    deleteTask(index); // Remove the task after editing
+    deleteTask(index); 
     saveTasks();
 };
 
 const updateTasksList = () => {
-    const taskList = document.querySelector('.task-list'); // Use querySelector for class
+    const taskList = document.querySelector('.task-list'); 
     taskList.innerHTML = "";
 
     tasks.forEach((task, index) => {
@@ -58,19 +58,19 @@ const updateTasksList = () => {
            <p>${task.text}</p>
           </div>
           <div class="icons">
-           <img src="./img/edit.png" onClick="editTask(${index})" />
-           <img src="./img/bin.png" onClick="deleteTask(${index})" />
+           <i class="fas fa-edit" onClick="editTask(${index})" style="cursor: pointer; margin-right: 10px;"></i>
+           <i class="fas fa-trash" onClick="deleteTask(${index})" style="cursor: pointer; color: red;"></i>
           </div>
          </div>  
         `;
 
-        // Add event listener to the checkbox
+        
         const checkbox = listItem.querySelector('.checkbox');
         checkbox.addEventListener('change', () => toggleTaskComplete(index));
         taskList.append(listItem);
     });
 
-    // Update progress bar and stats
+    
     updateProgress();
 };
 
@@ -80,14 +80,14 @@ const updateProgress = () => {
     const progress = document.getElementById('progress');
     const numbers = document.getElementById('numbers');
 
-    // Update the numbers display
+    
     numbers.textContent = `${completedTasks}/${totalTasks}`;
 
-    // Calculate progress percentage
+    
     let progressPercentage = 0;
 
     if (totalTasks === 0) {
-        progressPercentage = 100; // Set to 100% when there are no tasks
+        progressPercentage = 100; 
     } else {
         progressPercentage = (completedTasks / totalTasks) * 100;
     }
@@ -95,7 +95,7 @@ const updateProgress = () => {
     progress.style.width = `${progressPercentage}%`;
 };
 
-// Event listener for adding a new task
+
 document.getElementById('newTask').addEventListener('click', function (e) {
     e.preventDefault();
     addTask();
